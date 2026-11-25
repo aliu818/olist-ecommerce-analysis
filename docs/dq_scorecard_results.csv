@@ -1,0 +1,29 @@
+check_id,category,table_name,check_description,failing_rows,rows_checked,pct_failing
+1,Uniqueness,ORDERS,"Duplicate order_id",0,99441,0.00
+2,Uniqueness,CUSTOMERS,"Duplicate customer_id",0,99441,0.00
+3,Uniqueness,PRODUCTS,"Duplicate product_id",0,32951,0.00
+4,Uniqueness,SELLERS,"Duplicate seller_id",0,3095,0.00
+5,Uniqueness,ORDER_ITEMS,"Duplicate (order_id, order_item_id)",0,112650,0.00
+6,Uniqueness,ORDER_REVIEWS,"Duplicate review_id",814,99224,0.82
+7,Uniqueness,ORDER_REVIEWS,"Orders with more than one review",547,98673,0.55
+8,Completeness,ORDERS,"Missing order_id or customer_id",0,99441,0.00
+9,Completeness,ORDER_ITEMS,"Missing order_id, product_id or seller_id",0,112650,0.00
+10,Completeness,ORDER_REVIEWS,"Missing order_id or review_score",0,99224,0.00
+11,Completeness,PRODUCTS,"Missing product category",610,32951,1.85
+12,Referential integrity,ORDERS,"customer_id not found in CUSTOMERS",0,99441,0.00
+13,Referential integrity,ORDER_ITEMS,"order_id not found in ORDERS",0,112650,0.00
+14,Referential integrity,ORDER_ITEMS,"product_id not found in PRODUCTS",0,112650,0.00
+15,Referential integrity,ORDER_ITEMS,"seller_id not found in SELLERS",0,112650,0.00
+16,Referential integrity,ORDER_REVIEWS,"order_id not found in ORDERS",0,99224,0.00
+17,Referential integrity,ORDER_PAYMENTS,"order_id not found in ORDERS",0,103886,0.00
+18,Referential integrity,PRODUCTS,"Category has no English translation",13,32951,0.04
+19,Coverage,ORDERS,"Order has no items",775,99441,0.78
+20,Coverage,ORDERS,"Order has no payment",1,99441,0.00
+21,Coverage,ORDERS,"Order has no review",768,99441,0.77
+22,Date validity,ORDERS,"Missing or unreadable purchase timestamp",0,99441,0.00
+23,Date validity,ORDERS,"Approved before purchased",0,99441,0.00
+24,Date validity,ORDERS,"Handed to carrier before purchased",166,99441,0.17
+25,Date validity,ORDERS,"Delivered to customer before purchased",0,99441,0.00
+26,Date validity,ORDERS,"Delivered to customer before handed to carrier",23,99441,0.02
+27,Date validity,ORDERS,"Status delivered but no delivery date",8,99441,0.01
+28,Date validity,ORDERS,"Has delivery date but status not
