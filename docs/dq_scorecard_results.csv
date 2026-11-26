@@ -26,4 +26,9 @@ check_id,category,table_name,check_description,failing_rows,rows_checked,pct_fai
 25,Date validity,ORDERS,"Delivered to customer before purchased",0,99441,0.00
 26,Date validity,ORDERS,"Delivered to customer before handed to carrier",23,99441,0.02
 27,Date validity,ORDERS,"Status delivered but no delivery date",8,99441,0.01
-28,Date validity,ORDERS,"Has delivery date but status not
+28,Date validity,ORDERS,"Has delivery date but status not delivered",6,99441,0.01
+29,Value validity,ORDER_REVIEWS,"Review score not a number from 1 to 5",0,99224,0.00
+30,Value validity,ORDER_ITEMS,"Price missing, zero or negative",0,112650,0.00
+31,Value validity,ORDER_PAYMENTS,"Payment value is zero",9,103886,0.01
+32,Value validity,ORDER_PAYMENTS,"Payment type not_defined",3,103886,0.00
+33,Consistency,ORDER_PAYMENTS,"Paid total differs from items + freight by > 0.01",303,98665,0.31

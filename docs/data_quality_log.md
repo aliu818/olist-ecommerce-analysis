@@ -7,7 +7,7 @@ Checks were run on the RAW layer in Snowflake before any cleaning.
 
 ## Summary
 
-All 9 tables loaded with the expected row counts. 20 of 33 checks found no problems: there are no duplicate order, customer, product or seller IDs, no missing keys and no orphan records. Every issue found affects less than 2% of rows. Each one is handled in the staging layer as described below.
+All 9 tables loaded with the expected row counts. 19 of 33 checks found no failures: there are no duplicate order, customer, product or seller IDs, no missing keys and no orphan records. Every issue found affects less than 2% of rows. Each one is handled in the staging layer as described below.
 
 ## Issues and decisions
 
