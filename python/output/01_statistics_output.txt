@@ -1,0 +1,47 @@
+======================================================================
+Rows loaded: 96,282 (expected 96,282)
+======================================================================
+1. Do late orders get lower review scores?
+  Late: mean 2.27 stars (95% CI 2.23 to 2.31), n = 6,379
+  On time or early: mean 4.29 stars (95% CI 4.28 to 4.30), n = 89,258
+  Mann-Whitney U test p-value: < 0.001
+  (Mann-Whitney compares whole score distributions; it suits star ratings,
+   which are ranked categories rather than true measurements.)
+======================================================================
+2. Is the bad-review rate (1-2 stars) higher for late orders?
+  Late: 3,982 of 6,379 = 62.42%
+  On time or early: 8,266 of 89,258 = 9.26%
+  Difference: +53.16 percentage points (95% CI +51.95 to +54.36)
+  Two-proportion z-test p-value: < 0.001
+======================================================================
+3. How many bad reviews do late deliveries cause?
+  Late orders are 6.7% of reviewed orders,
+  but 32.5% of all bad reviews (3,982 of 12,248).
+  If late orders had the on-time bad-review rate, there would be about 3,391 fewer bad reviews
+  (27.7% of all bad reviews).
+======================================================================
+4. Do customers come back less after a late FIRST order? (first orders before 2018-03-01)
+  Late first order: 73 of 3,667 = 1.99%
+  On-time first order: 1,520 of 51,772 = 2.94%
+  Difference: -0.95 percentage points (95% CI -1.38 to -0.42)
+  Two-proportion z-test p-value: < 0.001
+  (Should match the SQL: 73 of 3,667 late and 1,520 of 51,772 on time.)
+======================================================================
+5. What predicts a bad review? (logistic regression)
+  Orders in model: 95,636
+                                odds_ratio  ci_low  ci_high  p_value
+customer_region[T.South]              0.86    0.80     0.91  < 0.001
+customer_region[T.Center-West]        0.96    0.87     1.05    0.319
+customer_region[T.Northeast]          0.94    0.87     1.01    0.079
+customer_region[T.North]              0.86    0.74     1.01    0.061
+is_late                              18.43   17.38    19.55  < 0.001
+seller_missed_deadline                1.37    1.28     1.46  < 0.001
+multi_seller                          3.49    3.08     3.96  < 0.001
+multi_item                            2.93    2.76     3.11  < 0.001
+order_value_100                       1.02    1.01     1.03  < 0.001
+promised_days                         1.02    1.02     1.02  < 0.001
+  Pseudo R-squared: 0.170
+  How to read: an odds ratio of 2.0 means twice the odds of a bad review,
+  holding the other factors fixed. Regions are compared with the Southeast.
+======================================================================
+Saved odds ratios to python/output/logit_odds_ratios.csv
